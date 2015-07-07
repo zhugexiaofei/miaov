@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+	    <title>抖动</title>
+	    <style type="text/css">
+             *{padding:0;margin:0;};
+             body{ 
+                background-color:#fff;
+                color: #555;
+                font-family:'Avenir Next','Lantinghei SC';
+                font-size:14px;
+                -webkit-font-smoothing:antialiased;
+             }  
+			 #img1 { position:absolute; left:1px;top:1px;}
+			 #img2 { position:absolute; left:200px;top:200px;}
+	    </style>
+        <script type="text/javascript">
+             window.onload = function () {
+	             var oImg1 = document.getElementById('img1');
+	             var oImg2 = document.getElementById('img2');
+	
+	             oImg1.onclick = fnShake;
+	             oImg2.onclick = fnShake;
+	
+	             function fnShake() {
+		             var _this = this;
+		             shake( _this, 'left', function(){
+			         shake( _this, 'top' );
+		          });
+	            }
+
+             };
+function getStyle(obj,attr) { 
+    return obj.currentStyle?obj.currentStyle[attr] : getComputedStyle(obj)[attr]; 
+}
+function shake(obj,attr,endFr){
+	var pos = parseInt(getStyle(obj,attr));
+	var arr = [];
+	var num = 0;
+	var timer = null;
+	
+	for(var i =20;i>0;i-=2){
+		arr.push(i,-i);
+		}
+	arr.push(0);
+	clearInterval(obj.shake);
+	obj.shake=setInterval(function(){
+		obj.style[attr]= pos + arr[num] + 'px';
+		num++;
+		if(num==arr.length){
+			clearInterval(obj.shake);
+			endFr && endFr();
+			}
+		},50);
+}
+
+        </script>
+	</head>
+    <body >
+    	<img id="img1" src="img/caption.png"/>
+        <img id="img2" src="img/zz.png" />
+    </body>
+</html>
