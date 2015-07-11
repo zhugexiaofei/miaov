@@ -243,9 +243,9 @@ var d = dataStr.split('<br><br><br>');
 for (var i = 0; i < d.length; i++) {
   var c = d[i].split('<br><br>');
   data.push({
-    img: c[0].replace('、', ' ') + '.jpg',
+    img: c[0].replace('、', '') + '.jpg',
     caption: c[0].split('、')[1],
     desc: c[1]
   });
-  console.log(c[0].replace('、', ' ') + '.jpg');
+  console.log(c[0].replace('、', '') + '.jpg');
 };
