@@ -7,11 +7,9 @@
 <script src="data.js"></script>
 <script>
 window.onload = function(){
-
-var tab = new Tab();
-tab.init();
-
-
+     var tab = new Tab();
+     tab.init();
+}
 function Tab(){
    this.oHeader = document.getElementById('header');
    this.oListContent = document.getElementById('listContent');
@@ -118,8 +116,6 @@ Tab.prototype.addTipContent = function( m, n ){
 	           +'<li class="col" <span >时间：</span><span>'+data[m].list[n].addDate+'</span></li>';
 	 oUl.innerHTML = str;
 	 this.oTipsContent.appendChild( oUl );
-}
-
 }
 </script>
 </head>
